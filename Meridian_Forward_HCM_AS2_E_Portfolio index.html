@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meridian Forward | HCM AS2 E-Portfolio</title>
+<style>
+:root{--navy:#0a1d34;--navy2:#132d4b;--cream:#faf7e7;--ink:#10243a;--muted:#617286;--gold:#debc69;--line:#d9d7c9;--paper:#fffdf4;--green:#dcebdd;--red:#f6e3df;--shadow:0 12px 32px rgba(5,20,38,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f0efe7;color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.55}
+a{color:inherit}button,select{font:inherit}.shell{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh}
+aside{background:var(--navy);color:var(--cream);padding:26px 18px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{padding:8px 10px 22px;border-bottom:1px solid #34475b}.eyebrow{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#b8c7d6;font-weight:800}.brand h1{font-size:1.35rem;line-height:1.2;margin:9px 0}.brand p{font-size:.85rem;color:#c7d2dc;margin:0}
+nav{display:grid;gap:6px;margin-top:22px}nav a{text-decoration:none;color:#d5dce4;padding:10px 12px;border-radius:9px;font-size:.91rem}nav a:hover,nav a.active{background:#203a58;color:white}nav a span{display:inline-block;width:28px;color:var(--gold);font-weight:800}
+.side-note{font-size:.78rem;color:#c1ccd8;margin:25px 10px 0;border-top:1px solid #34475b;padding-top:16px}
+main{min-width:0}.hero{background:var(--navy);color:var(--cream);padding:48px clamp(22px,5vw,72px) 46px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:360px;height:360px;border:1px solid #52657a;border-radius:50%;right:-100px;top:-140px;box-shadow:0 0 0 35px rgba(255,255,255,.025),0 0 0 75px rgba(255,255,255,.02)}
+.hero .tag{display:inline-block;border:1px solid #62748a;color:#e3d7b7;border-radius:99px;padding:5px 11px;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+.hero h2{font-size:clamp(2.1rem,4.3vw,4rem);line-height:1.04;max-width:850px;margin:18px 0 14px;letter-spacing:-.04em}.hero p{max-width:780px;color:#d0d9e1;font-size:1.05rem}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{border:0;border-radius:9px;padding:10px 15px;cursor:pointer;font-weight:750;background:var(--gold);color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;justify-content:center}.btn.secondary{background:transparent;color:var(--cream);border:1px solid #8291a1}.btn:hover{filter:brightness(1.04);transform:translateY(-1px)}
+.wrap{padding:28px clamp(18px,4.2vw,60px) 70px;max-width:1500px;margin:auto}.section{scroll-margin-top:22px;margin-bottom:48px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px}.section-head h2{font-size:clamp(1.55rem,2.5vw,2.2rem);letter-spacing:-.035em;margin:0}.section-head p{margin:5px 0 0;color:var(--muted);max-width:750px}.kicker{font-size:.72rem;letter-spacing:.13em;color:#7e6a36;font-weight:900;text-transform:uppercase}
+.grid{display:grid;gap:16px}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{background:var(--paper);border:1px solid #e3e0d2;border-radius:15px;padding:20px;box-shadow:var(--shadow)}.card h3{margin:0 0 8px;font-size:1.04rem}.card p{margin:6px 0;color:#43556a}.num{font-size:2rem;line-height:1.15;font-weight:900;letter-spacing:-.04em}.small{font-size:.83rem;color:var(--muted)}.pill{display:inline-block;padding:4px 9px;border-radius:99px;font-size:.73rem;font-weight:800;background:#ece8d7;color:#46556a}.pill.warn{background:#f5e5bf;color:#6a4a09}.pill.good{background:var(--green);color:#285a35}
+.callout{border-left:4px solid var(--gold);padding:14px 17px;background:#f8f2df;border-radius:0 10px 10px 0;margin:16px 0}.callout strong{display:block;margin-bottom:4px}.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.flow .card{position:relative}.flow .card:not(:last-child):after{content:"→";position:absolute;right:-17px;top:40%;font-size:1.5rem;color:#a7863d;z-index:1;font-weight:900}
+table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:11px 12px;border-bottom:1px solid #e6e2d4;vertical-align:top}th{font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:#596a7b;background:#f4f1e5}tbody tr:hover{background:#f8f5e9}.table-wrap{overflow:auto;border:1px solid #e3e0d2;border-radius:12px;background:var(--paper)}
+.bar-row{display:grid;grid-template-columns:150px minmax(70px,1fr) 70px;gap:12px;align-items:center;margin:13px 0}.track{height:12px;border-radius:99px;background:#e7e4d7;overflow:hidden}.bar{height:100%;background:var(--navy);border-radius:99px}.bar.gold{background:#c29a3f}
+.selector{padding:10px 12px;border-radius:9px;border:1px solid #c9c7b9;background:white;color:var(--ink);min-width:250px}.scenario-top{display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap}.metric-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}.metric{padding:15px;background:#f2efdf;border-radius:11px}.metric .num{font-size:1.55rem}.metric .small{margin-top:4px}
+details{background:var(--paper);border:1px solid #e3e0d2;border-radius:12px;padding:14px 17px;margin:10px 0}summary{font-weight:800;cursor:pointer}details p,details ul{color:#43556a}
+.checklist{display:grid;gap:10px}.check{display:flex;gap:11px;padding:12px;border:1px solid #e4e0d1;border-radius:10px;background:#fffdf5;align-items:flex-start}.check input{margin-top:5px;accent-color:var(--navy);transform:scale(1.15)}.check.done{background:#edf5ec}
+.search-row{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.search-row input{flex:1;min-width:230px;border:1px solid #c9c7b9;border-radius:9px;padding:11px 13px}
+.source-tag{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.8rem;background:#eae7d9;padding:3px 6px;border-radius:5px;white-space:nowrap}
+footer{background:var(--navy);color:#cbd5df;padding:24px clamp(18px,4.2vw,60px);font-size:.84rem}
+@media(max-width:1000px){.shell{grid-template-columns:1fr}aside{height:auto;position:relative;padding:14px 16px}.brand{padding-bottom:12px}nav{display:flex;overflow-x:auto;margin-top:12px;gap:4px}nav a{white-space:nowrap}.side-note{display:none}.grid.four{grid-template-columns:repeat(2,1fr)}.flow{grid-template-columns:repeat(2,1fr)}.flow .card:after{display:none}.metric-strip{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.grid.three,.grid.two,.grid.four,.flow{grid-template-columns:1fr}.bar-row{grid-template-columns:115px minmax(60px,1fr) 55px;gap:7px}.metric-strip{grid-template-columns:repeat(2,1fr)}.hero{padding-top:34px}.section-head{display:block}.selector{min-width:100%;width:100%}table{font-size:.82rem}th,td{padding:9px}}
+@media print{aside,.hero-actions,.selector,.search-row,.btn{display:none!important}.shell{display:block}.hero{padding:25px;background:var(--navy)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.wrap{padding:20px}.card{box-shadow:none;break-inside:avoid}.section{break-inside:avoid}body{background:white}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside>
+  <div class="brand">
+    <div class="eyebrow">HCM AS2 • Evidence portfolio</div>
+    <h1>MERIDIAN<br>FORWARD</h1>
+    <p>From business diagnosis to a conditional, evidence-led workforce decision.</p>
+  </div>
+  <nav aria-label="Portfolio navigation">
+    <a class="active" href="#overview"><span>00</span> Overview</a>
+    <a href="#diagnosis"><span>01</span> Case & diagnosis</a>
+    <a href="#concepts"><span>02</span> HCM concepts</a>
+    <a href="#workforce"><span>03</span> Workforce planner</a>
+    <a href="#decision"><span>04</span> Options & decision</a>
+    <a href="#evidence"><span>05</span> Evidence hub</a>
+    <a href="#defence"><span>06</span> Mentor & defence</a>
+  </nav>
+  <div class="side-note">Working rule: calculations are conditional illustrations. They do not confirm employee release, vendor approval, decision authority or realised savings.</div>
+</aside>
+<main>
+<header class="hero" id="overview">
+  <span class="tag">Team 3 • Meridian Forward case</span>
+  <h2>Human Capital Management<br>AS2 E-Portfolio</h2>
+  <p>A connected portfolio of the business problem, HCM role design, workforce calculations, staffing readiness and decision controls. It uses the attached HCM AS2 workbook and five-slide presentation as its source material.</p>
+  <div class="hero-actions">
+    <a class="btn" href="#decision">Explore recommendation ↓</a>
+    <button class="btn secondary" onclick="window.print()">Print / Save as PDF</button>
+    <a class="btn secondary" href="#evidence">Open evidence hub</a>
+  </div>
+</header>
+
+<div class="wrap">
+<section class="section">
+  <div class="grid four">
+    <article class="card"><div class="kicker">Pilot demand</div><div class="num">1,868 h</div><p class="small">Four-week bounded workflow + single output</p></article>
+    <article class="card"><div class="kicker">Potential supply</div><div class="num">1,984 h</div><p class="small">Conditional on full role-level release</p></article>
+    <article class="card"><div class="kicker">Skill-specific gap</div><div class="num">216 h</div><p class="small">80 h data + 72 h QA + 64 h legacy</p></article>
+    <article class="card"><div class="kicker">Vendor estimate</div><div class="num">₹3.76L</div><p class="small">3 role-specific workers; conditional option</p></article>
+  </div>
+  <div class="callout"><strong>Portfolio conclusion</strong>Bounded workflow plus one accepted, authoritative customer-data output is the preferred scenario in the workbook. It reduces duplicate preparation demand, but does not itself grant authority, confirm internal release or make the pilot approved.</div>
+</section>
+
+<section class="section" id="diagnosis">
+  <div class="section-head"><div><div class="kicker">01 • Case & diagnosis</div><h2>What problem is Meridian solving?</h2><p>The case points to a coordination and decision-rights problem as well as a staffing problem. A late escalation cannot be explained only as an individual or location failure when the decision sequence, ownership and clocks are unclear.</p></div></div>
+  <div class="flow">
+    <article class="card"><div class="kicker">01 • Business need</div><h3>Deliver new work</h3><p>Run the pilot while existing customer-facing and legacy services continue.</p><span class="source-tag">P008–P014</span></article>
+    <article class="card"><div class="kicker">02 • Diagnosis</div><h3>Coordination + duplicate work</h3><p>The planning workbook counts the same customer-data preparation under product and regional work. Decision timing and escalation also need clearer ownership.</p><span class="source-tag">P019–P029</span></article>
+    <article class="card"><div class="kicker">03 • HCM response</div><h3>Make work deployable</h3><p>Define output ownership, role purpose, capacity, job criteria, release authority and escalation limits.</p><span class="source-tag">P023–P029</span></article>
+    <article class="card"><div class="kicker">04 • Outcome</div><h3>Conditional pilot plan</h3><p>Use a scenario-based plan with readiness gates and named approvers, not a blanket hiring instruction.</p><span class="source-tag">Q5.03–Q5.08</span></article>
+  </div>
+  <div class="grid two" style="margin-top:16px">
+    <article class="card"><h3>Diagnosis: two linked constraints</h3><ul><li><b>Work design:</b> duplicate customer-data preparation inflates demand unless one shared output is accepted by the receiving owner.</li><li><b>Decision design:</b> routine decisions may be bounded locally, but pricing, customer consent and major architecture exceptions remain with authorised owners.</li><li><b>People deployment:</b> available hours are not the same as approved hours; legacy service cover must be protected.</li></ul></article>
+    <article class="card"><h3>Evidence-led interpretation</h3><p>The workbook frames the proposed response as a student-developed plan. It retains case paragraph IDs and teaching inputs rather than inventing approvals or records.</p><p><span class="pill">Case evidence</span> <span class="pill">Q5 teaching inputs</span> <span class="pill warn">Q6 assumptions</span></p><p class="small">The portfolio distinguishes case facts, calculated values and student proposals throughout.</p></article>
+  </div>
+</section>
+
+<section class="section" id="concepts">
+  <div class="section-head"><div><div class="kicker">02 • HCM concepts</div><h2>Translate strategy into roles and authority</h2><p>The HR contribution is to connect business priorities to accountable work, realistic capacity, evidence-based selection and a clear governance model.</p></div></div>
+  <div class="grid three">
+    <article class="card"><h3>Strategic HR business partnering</h3><p>SHRBP translates business priorities into role purpose, workforce options, performance measures and people processes. It recommends and coordinates; it does not automatically acquire commercial or technical approval authority.</p><span class="source-tag">Read 1 Mintzberg • Read 2 Dessler</span></article>
+    <article class="card"><h3>Job analysis: JD vs JS</h3><p><b>Job description (JD):</b> outputs, duties, reporting, decision limits and escalation. <b>Job specification (JS):</b> knowledge, skills and capability evidence required to perform those duties.</p><span class="source-tag">D2 • Job design</span></article>
+    <article class="card"><h3>Work design choices</h3><p><b>Enlargement:</b> add related tasks. <b>Enrichment:</b> add responsibility only where authority is genuinely delegated. <b>Rotation:</b> move across roles with training and service cover. Do not use job design to disguise an unresolved authority gap.</p><span class="source-tag">Read 3 • Job analysis/design</span></article>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3>Proposed accountability map</h3>
+    <div class="table-wrap"><table><thead><tr><th>Actor</th><th>Accountability</th><th>Boundary / control</th></tr></thead><tbody>
+    <tr><td><b>SHRBP</b></td><td>Recommend role design, workforce options, selection criteria, onboarding and performance measures.</td><td>Cannot grant product, pricing or architecture authority by itself.</td></tr>
+    <tr><td><b>Business / technical leaders</b></td><td>Approve reserved/high-risk decisions and confirm authorised decision owners.</td><td>Publish thresholds, named deputies and escalation clock.</td></tr>
+    <tr><td><b>Source-service manager</b></td><td>Approve individual release and protect legacy-service cover.</td><td>No secondment without capacity and backfill checks.</td></tr>
+    <tr><td><b>Line + HR / operating owner</b></td><td>Execute staffing, access, induction, supervision and employee lifecycle.</td><td>Track readiness evidence before productive work starts.</td></tr>
+    </tbody></table></div>
+  </div>
+</section>
+
+<section class="section" id="workforce">
+  <div class="section-head"><div><div class="kicker">03 • Workforce planner</div><h2>Demand, potential supply and role-specific gaps</h2><p>Choose an arrangement to inspect the workbook’s conditional scenario comparison. Role gaps are summed by skill; spare hours in another role are not automatically transferable.</p></div></div>
+  <div class="card">
+    <div class="scenario-top"><div><h3 style="margin-bottom:4px">Scenario explorer</h3><p class="small" style="margin:0">Figures from the “Four scenarios” sheet.</p></div>
+      <select class="selector" id="scenarioSelect" aria-label="Choose workforce scenario">
+        <option value="bss">Bounded + single output (recommended)</option>
+        <option value="bs">Bounded + duplicate</option>
+        <option value="rss">Retained + single output</option>
+        <option value="rs">Retained + duplicate</option>
+      </select>
+    </div>
+    <div class="metric-strip" id="scenarioMetrics"></div>
+    <div class="grid two">
+      <div><h3>Role-specific skill gaps</h3><div id="roleBars"></div></div>
+      <div><h3>Interpretation</h3><div id="scenarioNote" class="callout"></div><p class="small">Potential supply assumes full role release. The workbook keeps approved allocation flags at zero, so these hours are not shown as formally approved deployments.</p></div>
+    </div>
+  </div>
+  <div class="grid two" style="margin-top:16px">
+    <article class="card"><h3>Worked calculation: data preparation</h3><div class="table-wrap"><table><tbody>
+      <tr><th>Task demand</th><td>240 h</td></tr><tr><th>Coordination</th><td>32 h</td></tr><tr><th>Total pilot demand</th><td><b>272 h</b></td></tr><tr><th>Potential available supply</th><td>192 h</td></tr><tr><th>Role-specific gap</th><td><b>MAX(0, 272 − 192) = 80 h</b></td></tr><tr><th>Vendor bridge</th><td>1 × 160 paid hours × ₹550 = ₹88,000</td></tr>
+    </tbody></table></div><p class="small">Vendor effective capacity is discounted for proficiency; paid hours determine the invoice. Extra induction effort must be checked separately.</p></article>
+    <article class="card"><h3>Why 216 h is not a net shortage</h3><p>Total pilot demand is 1,868 h and potential supply is 1,984 h, so aggregate supply exceeds aggregate demand by 116 h. However, role-specific gaps total 216 h across data preparation, QA and legacy expertise.</p><p>Those figures can coexist because spare capacity in engineering, analytics or operations is not assumed to substitute for specialist skills. The decision must address the skills that are short, not only the aggregate hours.</p><span class="pill warn">No assumed cross-skill transfer</span></article>
+  </div>
+</section>
+
+<section class="section" id="decision">
+  <div class="section-head"><div><div class="kicker">04 • Options → decision</div><h2>Recommended conditional pilot design</h2><p>The workbook compares four arrangements. The recommended option is the only one in this comparison marked “Conditional feasibility” with three vendor workers and positive budget headroom.</p></div></div>
+  <div class="table-wrap"><table><thead><tr><th>Arrangement</th><th>Demand</th><th>Potential supply</th><th>Role gaps</th><th>Vendor workers</th><th>Vendor cost</th><th>Budget balance</th><th>Workbook status</th></tr></thead><tbody>
+    <tr><td>Retained + duplicate</td><td>2,356 h</td><td>1,984 h</td><td>544 h</td><td>6</td><td>₹6.40L</td><td>−₹0.40L</td><td><span class="pill warn">Over budget/limit</span></td></tr>
+    <tr><td>Retained + single output</td><td>2,116 h</td><td>1,984 h</td><td>304 h</td><td>4</td><td>₹4.64L</td><td>₹1.36L</td><td><span class="pill good">Conditional feasibility</span></td></tr>
+    <tr><td>Bounded + duplicate</td><td>2,108 h</td><td>1,984 h</td><td>456 h</td><td>6</td><td>₹6.40L</td><td>−₹0.40L</td><td><span class="pill warn">Over budget/limit</span></td></tr>
+    <tr class="recommended"><td><b>Bounded + single output</b></td><td><b>1,868 h</b></td><td><b>1,984 h</b></td><td><b>216 h</b></td><td><b>3</b></td><td><b>₹3.76L</b></td><td><b>₹2.24L</b></td><td><span class="pill good">Conditional feasibility</span></td></tr>
+  </tbody></table></div>
+  <div class="grid two" style="margin-top:16px">
+    <article class="card"><h3>Why this option?</h3><ul><li>Bounded workflow reduces the demand assigned to engineering, analytics and operations in the teaching scenario.</li><li>One authoritative customer-data output removes 240 h of duplicate preparation only if the receiving owner accepts the shared output.</li><li>It uses one data-preparation vendor plus one QA vendor and one legacy specialist in the baseline estimate.</li><li>Estimated vendor cost is ₹3.76 lakh against a ₹6.00 lakh illustrative budget, leaving ₹2.24 lakh headroom before unmodelled costs.</li></ul></article>
+    <article class="card"><h3>Decision gates before execution</h3><div class="checklist" id="decisionChecks">
+      <label class="check"><input type="checkbox"><span><b>Authority:</b> name commercial/technical approvers, thresholds, deputies and escalation timing.</span></label>
+      <label class="check"><input type="checkbox"><span><b>Duplication:</b> confirm one authoritative output and a named receiving owner.</span></label>
+      <label class="check"><input type="checkbox"><span><b>Release + cover:</b> approve employee-level hours and protect source-service commitments.</span></label>
+      <label class="check"><input type="checkbox"><span><b>Vendor readiness:</b> confirm start date, access, induction, supervision and acceptance criteria.</span></label>
+      <label class="check"><input type="checkbox"><span><b>Budget:</b> verify vendor rates and any extra recruitment, training or backfill costs.</span></label>
+    </div><p class="small">Ticking items is a personal checklist only; it does not record organisational approval.</p></article>
+  </div>
+  <div class="callout"><strong>Recommendation</strong>Proceed with bounded workflow + single output as the preferred design for further validation. Do not describe it as approved staffing, confirmed savings or a transfer of reserved decision rights until the gates above are evidenced.</div>
+</section>
+
+<section class="section" id="evidence">
+  <div class="section-head"><div><div class="kicker">05 • Evidence hub</div><h2>Trace each claim to its source</h2><p>Search by case paragraph, workbook sheet or concept. Evidence IDs below are retained from the attached workbook and presentation; the workbook remains the calculation source.</p></div></div>
+  <div class="search-row"><input id="evidenceSearch" type="search" placeholder="Search e.g. P024, Q5.07, staffing, authority…" aria-label="Search evidence"><span class="pill" id="evidenceCount">8 evidence groups</span></div>
+  <div id="evidenceList">
+    <details open data-search="p008 p009 p010 p011 p014 business need global capability center coordination">
+      <summary>Case context and business need — P008–P014</summary><p>Use for Meridian’s operating context, business shift and the need to align global capability with local work and decision rights.</p><p><span class="source-tag">Source: Case extracts</span> <span class="source-tag">D1 HR Alignment</span></p>
+    </details>
+    <details data-search="p019 p020 p021 escalation clocks decision timeline">
+      <summary>Decision sequence and escalation — P019–P021</summary><p>Use to discuss why the reported delay should be analysed through the sequence of technical work, decision timing and escalation rather than attributed to one location alone.</p><p><span class="source-tag">Source: Case extracts</span></p>
+    </details>
+    <details data-search="p023 p024 p025 p026 p027 p028 p029 workforce planning duplicate data output coordination">
+      <summary>Workforce planning, duplicated work and cross-functional coordination — P023–P029</summary><p>The workbook identifies customer-data preparation counted under both product and regional work and records differing control, market and architecture perspectives. The single-output option is conditional on acceptance by the receiving owner.</p><p><span class="source-tag">Source: Case extracts</span> <span class="source-tag">Four scenarios</span></p>
+    </details>
+    <details data-search="q5.01 q5.02 q5.03 q5.04 q5.05 q5.06 q5.07 q5.08 capacity productive hours demand supply cost">
+      <summary>Teaching inputs and calculation basis — Q5.01–Q5.08</summary><p>Used for productive time, individual availability, retained legacy demand, pilot task and coordination hours, duplicate-work comparison, vendor proficiency/capacity, vendor cost and FTE framing.</p><p><span class="source-tag">Source: Inputs</span> <span class="source-tag">Worked example</span> <span class="source-tag">Work and gaps</span></p>
+    </details>
+    <details data-search="p061 p063 p064 p069 p070 p071 selection job design competency work sample fairness">
+      <summary>Job analysis, job design and selection evidence — P061–P064; P069–P071</summary><p>Use to justify job-related criteria, structured work samples, exception judgement, documentation and the separation of job requirements from a candidate’s background or title.</p><p><span class="source-tag">Source: Job design</span> <span class="source-tag">Selection example</span></p>
+    </details>
+    <details data-search="p168 p183 p184 p187 p188 p189 p190 p207 p208 service cover release hiring timing onboarding">
+      <summary>Release, service cover, hiring timing and onboarding — P168; P183–P190; P207–P208</summary><p>Use when explaining why employee release, protected service, timing, access and readiness need verification. Permanent hiring lead time is treated separately from the four-week pilot.</p><p><span class="source-tag">Source: D3 Staffing Readiness</span> <span class="source-tag">Assumptions</span></p>
+    </details>
+    <details data-search="q6.01 q6.02 q6.03 q6.04 q6.05 q6.06 q6.07 assumptions">
+      <summary>Student assumptions and downside tests — Q6.01–Q6.07</summary><p>Role criteria, extra onboarding effort, delayed vendor start/proficiency, extra cash outlay, illustrative selection scores, release/duplication permissions and weekly phasing are documented assumptions requiring named owners and verification.</p><p><span class="source-tag">Source: Assumptions</span></p>
+    </details>
+    <details data-search="excel workbook formulas live model traceability d1 d2 d3 four scenarios">
+      <summary>Supporting workbook map — D1, D2, D3 and calculation sheets</summary><p><b>D1 HR Alignment:</b> output-to-role ownership and decision rights. <b>D2 Work and Roles:</b> role demand, supply, gap and JD/JS. <b>D3 Staffing Readiness:</b> source, selection, onboarding and gates. <b>Four scenarios / Work and gaps / Employee allocations / Assumptions:</b> quantitative comparison and conditions.</p><p><span class="source-tag">Source: HCM_Meridian_Case_Filled workbook</span></p>
+    </details>
+  </div>
+</section>
+
+<section class="section" id="defence">
+  <div class="section-head"><div><div class="kicker">06 • Corporate mentor + accountability</div><h2>Tested → reviewed → revised → defended</h2><p>Use this section to prepare a short defence of the method, assumptions and conditions rather than presenting the scenario as an approved operating plan.</p></div></div>
+  <div class="grid two">
+    <article class="card"><h3>Review loop</h3><div class="flow" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+      <div class="card"><b>Evidence</b><p class="small">Case paragraphs and teaching inputs</p></div><div class="card"><b>Review</b><p class="small">Check formulas and role-specific constraints</p></div><div class="card"><b>Defence</b><p class="small">Explain why the option fits the evidence</p></div><div class="card"><b>Revision</b><p class="small">Update assumptions when owners confirm facts</p></div>
+    </div></article>
+    <article class="card"><h3>Defence questions</h3><ol><li>Why can total potential supply exceed total demand while role-specific gaps still equal 216 h?</li><li>Why does single-output preparation reduce demand only after receiving-owner acceptance?</li><li>Why is the 600-position longer-term request not the same as four-week pilot staffing?</li><li>Why is a selected worker not ready until access, cover and authority are cleared?</li><li>Which values are teaching inputs, which are calculations, and which are student assumptions?</li></ol></article>
+  </div>
+  <div class="callout"><strong>Limitations to state explicitly</strong>The workbook uses conditional full-release assumptions and baseline extra costs of zero where not supplied. Vendor start, proficiency, onboarding effort, service cover, permissions and approval are not all confirmed. Budget headroom is therefore not a guarantee of savings.</div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><div class="kicker">Portfolio completion</div><h2>Final submission checklist</h2><p>Use this checklist to review the portfolio before presenting or submitting.</p></div></div>
+  <div class="card checklist" id="finalChecks">
+    <label class="check"><input type="checkbox"><span>Case diagnosis linked to paragraph IDs.</span></label>
+    <label class="check"><input type="checkbox"><span>SHRBP mandate and reserved decision rights explained.</span></label>
+    <label class="check"><input type="checkbox"><span>Demand, potential supply, role gaps and vendor costs reconciled to the workbook.</span></label>
+    <label class="check"><input type="checkbox"><span>JD/JS, selection evidence and readiness gates included.</span></label>
+    <label class="check"><input type="checkbox"><span>Student assumptions and downside tests clearly labelled.</span></label>
+    <label class="check"><input type="checkbox"><span>All figures described as conditional where approval or evidence is still pending.</span></label>
+  </div>
+</section>
+</div>
+<footer><b>MERIDIAN FORWARD / HCM AS2</b><br>Evidence-led e-portfolio • Based on the attached PowerPoint and completed Excel workbook. Scenario calculations are conditional, not approved deployment.</footer>
+</main>
+</div>
+<script>
+const scenarios={
+ bss:{name:"Bounded + single output",demand:1868,supply:1984,gap:216,workers:3,cost:376000,budget:224000,status:"Conditional feasibility",roles:[["Engineering",0],["Analytics",0],["Operations",0],["Data preparation",80],["Quality assurance",72],["Legacy experts",64]],note:"Preferred conditional design. Bounded workflow plus one accepted shared data-preparation output reduces duplicate demand. It depends on decision thresholds, receiving-owner acceptance, individual release and protected legacy service."},
+ bs:{name:"Bounded + duplicate",demand:2108,supply:1984,gap:456,workers:6,cost:640000,budget:-40000,status:"Over budget/limit",roles:[["Engineering",0],["Analytics",0],["Operations",0],["Data preparation",320],["Quality assurance",72],["Legacy experts",64]],note:"Bounding workflow alone does not remove duplicate preparation. Six vendor workers exceed the illustrative people limit and cost ₹40,000 more than the ₹6 lakh budget."},
+ rss:{name:"Retained + single output",demand:2116,supply:1984,gap:304,workers:4,cost:464000,budget:136000,status:"Conditional feasibility",roles:[["Engineering",0],["Analytics",0],["Operations",0],["Data preparation",112],["Quality assurance",96],["Legacy experts",96]],note:"One accepted shared output reduces preparation demand, but retained workflow keeps higher demand in other roles. This option fits the illustrative budget with ₹1.36 lakh headroom, subject to the same release and readiness gates."},
+ rs:{name:"Retained + duplicate",demand:2356,supply:1984,gap:544,workers:6,cost:640000,budget:-40000,status:"Over budget/limit",roles:[["Engineering",0],["Analytics",0],["Operations",0],["Data preparation",352],["Quality assurance",96],["Legacy experts",96]],note:"This arrangement preserves duplicate work and the retained workflow. It produces the largest role-gap total in the comparison and exceeds both the illustrative budget and vendor-worker limit."}
+};
+const fmt=n=>new Intl.NumberFormat("en-IN").format(n);
+function renderScenario(key){
+ const s=scenarios[key];
+ document.getElementById("scenarioMetrics").innerHTML=[
+  ["Pilot demand",fmt(s.demand)+" h"],["Potential supply",fmt(s.supply)+" h"],["Role gaps",fmt(s.gap)+" h"],["Vendor bridge",s.workers+" workers"]
+ ].map(([a,b])=>`<div class="metric"><div class="small">${a}</div><div class="num">${b}</div></div>`).join("");
+ document.getElementById("roleBars").innerHTML=s.roles.map(([name,val])=>`<div class="bar-row"><span>${name}</span><div class="track"><div class="bar ${val===0?'gold':''}" style="width:${val===0?0:Math.max(2,val/352*100)}%"></div></div><b style="text-align:right">${val} h</b></div>`).join("");
+ const bal=s.budget>=0?`₹${(s.budget/100000).toFixed(2)} lakh headroom`:`₹${(Math.abs(s.budget)/100000).toFixed(2)} lakh over budget`;
+ document.getElementById("scenarioNote").innerHTML=`<strong>${s.status}</strong>${s.note}<br><br><b>Vendor cost:</b> ₹${fmt(s.cost)}<br><b>Budget position:</b> ${bal}`;
+}
+document.getElementById("scenarioSelect").addEventListener("change",e=>renderScenario(e.target.value));
+renderScenario("bss");
+document.querySelectorAll(".check input").forEach(input=>input.addEventListener("change",()=>input.closest(".check").classList.toggle("done",input.checked)));
+const search=document.getElementById("evidenceSearch");
+search.addEventListener("input",()=>{
+ const q=search.value.trim().toLowerCase();let shown=0;
+ document.querySelectorAll("#evidenceList details").forEach(d=>{const match=!q||d.dataset.search.includes(q)||d.innerText.toLowerCase().includes(q);d.style.display=match?"":"none";if(match)shown++});
+ document.getElementById("evidenceCount").textContent=shown+" evidence group"+(shown===1?"":"s");
+});
+const sections=[...document.querySelectorAll("main section[id], main header[id]")];
+const links=[...document.querySelectorAll("nav a")];
+window.addEventListener("scroll",()=>{let current="overview";for(const sec of sections){if(sec.getBoundingClientRect().top<180)current=sec.id}links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+current))},{passive:true});
+</script>
+</body>
+</html>
